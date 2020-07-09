@@ -18,6 +18,8 @@ public class ProfileController {
         this.repository = repository;
     }
 
+   // @GetMapping(value = "/addProfile")
+   // public void
 
     @GetMapping(value = "/profile/{id}")
     public Optional<Profile> getById(@PathVariable int id){

@@ -3,6 +3,7 @@ package ru.atf.server.entity;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "сity")
@@ -13,6 +14,8 @@ public class City {
     @GenericGenerator(name = "increment", strategy = "increment")
     private int id;
     private String name;
+
+
 
     public int getId() {
         return id;

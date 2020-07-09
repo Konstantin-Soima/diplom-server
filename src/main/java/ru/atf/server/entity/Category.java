@@ -18,8 +18,8 @@ public class Category {
     @Column(length = 255)
     private String link;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "city_id", referencedColumnName = "id")
+    @ManyToOne (optional=false, cascade=CascadeType.ALL)//(fetch = FetchType.LAZY)
+    @JoinColumn(name = "city_id")//, referencedColumnName = "id"
     private City city;
 
     public int getId() {

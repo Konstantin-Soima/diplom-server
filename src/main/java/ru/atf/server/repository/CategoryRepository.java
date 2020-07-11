@@ -8,6 +8,6 @@ import java.util.Optional;
 
 @Repository
 public interface CategoryRepository  extends CrudRepository<Category,Integer> {
-    Optional<Category> findByCityId(Integer City_id);
+    Iterable<Category> findByCityId(Integer City_id);
 
 }

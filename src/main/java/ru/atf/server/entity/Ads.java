@@ -25,7 +25,7 @@ public class Ads {
     @Column(length = 2000, nullable = true)
     private String content;
     //телефон
-    @Column(length = 5000, nullable = true)
+    @Column(length = 50000, nullable = true)
     private String phone;
     //дата добавления
     @Temporal(TemporalType.TIMESTAMP)

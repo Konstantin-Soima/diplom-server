@@ -31,9 +31,8 @@ public class CategoryController {
 
     @GetMapping(value = "/categoryByCity/{city_id}")
     public Iterable<Category> getByCity(@PathVariable int city_id){
-        Optional<Category> categoryOptional = repository.findByCityId(city_id);
-        return categoryOptional.map(Collections::singleton)
-                .orElseGet(Collections::emptySet);
+        Iterable<Category> categoryOptional = repository.findByCityId(city_id);
+        return categoryOptional;
     }
 
     @GetMapping(value = "/categories")

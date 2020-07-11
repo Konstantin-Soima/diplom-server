@@ -3,7 +3,9 @@ package ru.atf.server.entity;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.Calendar;
+import java.util.Date;
 
 @Entity
 @Table(name = "ads")
@@ -17,14 +19,34 @@ public class Ads {
     //ссылка
     private String link;
     //Название
+    @Column(length = 500)
     private String name;
     //текст
+    @Column(length = 2000, nullable = true)
     private String content;
     //телефон
+    @Column(length = 5000, nullable = true)
     private String phone;
     //дата добавления
     @Temporal(TemporalType.TIMESTAMP)
-    private Calendar date;
+    private Date date;
+
+    @Column(nullable = true)
+    private String profileLink;
+
+    @Column(nullable = true)
+    private String profileName;
+    /*@ManyToOne (optional=false, cascade=CascadeType.ALL)
+    @JoinColumn(name = "profile_id")//, referencedColumnName = "id"
+    private Profile profile;
+
+    public Profile getProfile() {
+        return profile;
+    }
+
+    public void setProfile(Profile profile) {
+        this.profile = profile;
+    }*/ //Не работает рекурсивно
 
     public int getId() {
         return id;
@@ -66,11 +88,41 @@ public class Ads {
         this.phone = phone;
     }
 
-    public Calendar getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(Calendar date) {
+    public void setDate(Date date) {
         this.date = date;
+    }
+
+    public String getProfileLink() {
+        return profileLink;
+    }
+
+    public void setProfileLink(String profileLink) {
+        this.profileLink = profileLink;
+    }
+
+    public String getProfileName() {
+        return profileName;
+    }
+
+    public void setProfileName(String profileName) {
+        this.profileName = profileName;
+    }
+
+    @Override
+    public String toString() {
+        return "Ads{" +
+                "id=" + id +
+                ", link='" + link + '\'' +
+                ", name='" + name + '\'' +
+                ", content='" + content + '\'' +
+                ", phone='" + phone + '\'' +
+                ", date=" + date +
+                ", profileLink='" + profileLink + '\'' +
+                ", profileName='" + profileName + '\'' +
+                '}';
     }
 }

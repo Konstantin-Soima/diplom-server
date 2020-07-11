@@ -1,12 +1,15 @@
 package ru.atf.server.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+import ru.atf.server.entity.Ads;
 import ru.atf.server.entity.Profile;
 import ru.atf.server.repository.ProfileRepository;
 
+import java.util.Date;
 import java.util.Optional;
 
 @RestController
@@ -18,10 +21,12 @@ public class ProfileController {
         this.repository = repository;
     }
 
-   // @GetMapping(value = "/addProfile")
-   // public void
+   @PostMapping(path = "/addProfile")
+   @ResponseStatus(HttpStatus.CREATED)
+   public void addProfile(@RequestBody Profile pro) {
+        repository.save(pro);
 
-    //fgfdgdfg
+   }
 
     @GetMapping(value = "/profile/{id}")
     public Optional<Profile> getById(@PathVariable int id){
